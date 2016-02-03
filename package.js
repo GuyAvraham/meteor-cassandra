@@ -1,6 +1,6 @@
 Package.describe({
   name: 'guy1812:cassandra',
-  version: '0.0.1',
+  version: '0.0.2',
   // Brief, one-line summary of the package.
   summary: 'wraps the asynchronous cassandra driver calls into meteor synchronous call style.',
   // URL to the Git repository containing the source code for this package.
@@ -11,7 +11,7 @@ Package.describe({
 });
 
 Npm.depends({
-  "cassandra-driver": "2.2.2"
+  "cassandra-driver": "3.0.0"
 });
 
 Package.onUse(function (api) {

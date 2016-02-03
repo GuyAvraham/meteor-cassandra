@@ -4,6 +4,7 @@ class CassandraClient {
   constructor(options) {
     this.client = new cassandraDriver.Client(options);
     this._execSync = Meteor.wrapAsync(this.client.execute, this.client);
+    this._batchSync = Meteor.wrapAsync(this.client.batch, this.client);
     this._connectSync = Meteor.wrapAsync(this.client.connect, this.client);
   }
 
@@ -13,6 +14,15 @@ class CassandraClient {
     }
     else {
       return this._execSync(...args);
+    }
+  }
+
+  batch(...args) {
+    if (args.length > 0 && _.isFunction(args[args.length - 1])) {
+      return this.client.batch(...args);
+    }
+    else {
+      return this._batchSync(...args);
     }
   }
 
