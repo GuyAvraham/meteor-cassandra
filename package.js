@@ -16,12 +16,9 @@ Npm.depends({
 
 Package.onUse(function (api) {
   api.versionsFrom('1.2.1');
-  api.use('ecmascript');
-  api.use('underscore');
-
-  api.addFiles('cassandra.js');
-
-  api.export('Cassandra');
+  api.use(['ecmascript', 'underscore'], "server");
+  api.addFiles(['cassandra.js'], "server");
+  api.export(['Cassandra'], "server");
 });
 
 Package.onTest(function (api) {
